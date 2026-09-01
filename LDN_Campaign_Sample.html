@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramadan Nutrition Reset — Light Diet Nutrition</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&family=Noto+Sans+Ethiopic:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1db954;--green-light:#39d46b;--green-bright:#4dff8c;--green-glow:rgba(29,185,84,.18);--green-dark:#0e8f3c;
+  --black:#050f08;--dark:#0a1a0e;--dark2:#0f2414;--card:rgba(15,36,20,.78);--white:#f2faf4;--gray:#8aab90;--border:rgba(29,185,84,.18);
+  --radius:18px;--ease:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+[data-lang="en"] .am,[data-lang="am"] .en{display:none!important}
+a{color:inherit}
+
+/* ── MINI NAV (campaign pages skip full site nav — single-purpose focus) ── */
+.camp-top-fixed{position:fixed;top:0;left:0;right:0;z-index:200}
+.camp-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 5%;background:rgba(5,15,8,.9);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.camp-logo{font-weight:800;font-size:1rem}
+.camp-logo span{color:var(--green)}
+.camp-back{font-size:.8rem;color:var(--gray);display:flex;align-items:center;gap:6px;transition:.2s}
+.camp-back:hover{color:var(--green)}
+.lang-mini{background:var(--dark2);border:1px solid var(--border);border-radius:20px;padding:5px 4px;display:flex;gap:2px}
+.lang-mini button{background:none;border:none;color:var(--gray);font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:16px;cursor:pointer;font-family:inherit}
+.lang-mini button.active{background:var(--green);color:#000}
+
+/* ── COUNTDOWN BAR (campaign_pages.countdown_end / show_countdown) ── */
+.countdown-bar{
+  background:linear-gradient(90deg,var(--green-dark),var(--green));
+  color:#000;text-align:center;padding:8px 5%;font-size:.8rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+}
+.cd-units{display:flex;gap:6px}
+.cd-unit{background:rgba(0,0,0,.18);border-radius:6px;padding:2px 8px;min-width:38px;text-align:center}
+
+/* ── HERO ── */
+.camp-hero{
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:150px 6% 60px;position:relative;overflow:hidden;
+}
+.camp-hero::before{
+  content:'';position:absolute;inset:0;z-index:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 20%,rgba(29,185,84,.14) 0%,transparent 70%);
+}
+.camp-eyebrow{
+  position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;
+  background:var(--green-glow);border:1px solid var(--border);border-radius:30px;
+  padding:7px 18px;margin-bottom:26px;font-size:.78rem;font-weight:700;color:var(--green);
+  text-transform:uppercase;letter-spacing:.08em;
+}
+.camp-eyebrow::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%}
+.camp-hero h1{
+  position:relative;z-index:1;font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:800;
+  line-height:1.12;letter-spacing:-.02em;max-width:820px;margin-bottom:20px;
+}
+.camp-hero h1 em{font-style:italic;font-family:'Playfair Display',serif;color:var(--green)}
+.camp-hero .sub{position:relative;z-index:1;color:var(--gray);font-size:1.05rem;max-width:560px;margin-bottom:36px;line-height:1.7}
+.camp-cta-row{position:relative;z-index:1;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.btn-camp{
+  background:var(--green);color:#000;font-weight:800;font-size:.95rem;
+  padding:15px 34px;border-radius:32px;border:none;cursor:pointer;
+  box-shadow:0 8px 30px rgba(29,185,84,.4);transition:.3s var(--ease);
+}
+.btn-camp:hover{background:var(--green-bright);transform:translateY(-2px);box-shadow:0 12px 40px rgba(29,185,84,.5)}
+.btn-camp-outline{
+  background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.22);
+  padding:14px 32px;border-radius:32px;font-weight:600;font-size:.95rem;transition:.3s;
+}
+.btn-camp-outline:hover{border-color:var(--green);color:var(--green)}
+
+/* ── VIDEO (campaign_pages.video_url — YouTube embed) ── */
+.camp-video-wrap{max-width:860px;margin:0 auto;padding:0 6% 90px;position:relative;z-index:1}
+.camp-video{
+  position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;
+  border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.5);
+  background:var(--dark2);
+}
+.camp-video iframe{width:100%;height:100%;border:0;display:block}
+
+/* ── BODY COPY (campaign_pages.body_en / body_am) ── */
+.camp-body{max-width:680px;margin:0 auto;padding:0 6% 90px;text-align:center}
+.camp-body h2{font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:800;margin-bottom:18px;letter-spacing:-.02em}
+.camp-body h2 em{font-style:italic;font-family:'Playfair Display',serif;color:var(--green)}
+.camp-body p{color:var(--gray);font-size:1rem;line-height:1.85;margin-bottom:16px}
+
+/* ── OFFER PILLARS (part of body copy — 3 quick value props) ── */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:900px;margin:44px auto 0;padding:0 6%}
+.pillar{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px 20px;text-align:center;transition:.3s}
+.pillar:hover{border-color:var(--green);transform:translateY(-4px)}
+.pillar-icon{font-size:1.8rem;margin-bottom:10px}
+.pillar h4{font-size:.92rem;font-weight:700;margin-bottom:6px}
+.pillar p{font-size:.8rem;color:var(--gray);line-height:1.6;margin:0}
+
+/* ── BEFORE/AFTER (campaign_pages.before_after JSONB) ── */
+.camp-ba{padding:90px 6%;background:var(--dark)}
+.camp-ba-inner{max-width:1000px;margin:0 auto}
+.camp-section-label{
+  text-align:center;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--green);margin-bottom:12px;
+}
+.camp-ba h2{text-align:center;font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:48px;font-weight:800}
+.ba-toggle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ba-card-mini{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.ba-visual-mini{
+  height:180px;position:relative;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--dark2),var(--black));
+}
+.ba-visual-mini .art{
+  position:absolute;inset:-20%;
+  background:radial-gradient(circle at 30% 30%,rgba(29,185,84,.35),transparent 55%),
+             radial-gradient(circle at 75% 70%,rgba(77,255,140,.28),transparent 50%);
+  filter:blur(30px);animation:drift 7s ease-in-out infinite alternate;
+}
+@keyframes drift{from{transform:scale(1) rotate(0)}to{transform:scale(1.15) rotate(5deg)}}
+.ba-visual-mini .emoji{position:relative;z-index:1;font-size:2.6rem}
+.ba-mini-info{padding:16px 18px}
+.ba-mini-name{font-weight:700;font-size:.9rem;margin-bottom:3px}
+.ba-mini-stat{color:var(--green);font-weight:800;font-size:1.1rem}
+.ba-mini-dur{color:var(--gray);font-size:.78rem}
+
+/* ── COUNTDOWN CTA BANNER ── */
+.camp-final-cta{
+  padding:90px 6%;text-align:center;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--dark2) 0%,var(--dark) 100%);
+  border-top:1px solid var(--border);
+}
+.camp-final-cta h2{font-size:clamp(1.6rem,3.2vw,2.3rem);margin-bottom:14px;font-weight:800}
+.camp-final-cta h2 em{font-style:italic;font-family:'Playfair Display',serif;color:var(--green)}
+.camp-final-cta p{color:var(--gray);margin-bottom:16px}
+.camp-final-cd{margin-bottom:30px;display:flex;justify-content:center;gap:10px}
+.fcd-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 18px;min-width:70px}
+.fcd-num{font-size:1.6rem;font-weight:800;color:var(--green)}
+.fcd-label{font-size:.68rem;color:var(--gray);text-transform:uppercase;letter-spacing:.08em}
+
+/* ── FOOTER (minimal) ── */
+.camp-foot{padding:30px 6%;text-align:center;border-top:1px solid var(--border);background:var(--black)}
+.camp-foot p{font-size:.78rem;color:var(--gray)}
+.camp-foot a{color:var(--green);font-weight:600}
+
+/* ── ADMIN FIELD ANNOTATION (dev-only visual aid, remove in production) ── */
+.field-tag{
+  position:absolute;top:8px;left:8px;z-index:20;
+  background:rgba(0,0,0,.7);border:1px dashed rgba(255,255,255,.3);color:#ffd166;
+  font-size:.62rem;font-family:monospace;padding:2px 8px;border-radius:4px;pointer-events:none;
+}
+
+@media(max-width:760px){
+  .pillars,.ba-toggle-grid{grid-template-columns:1fr}
+  .camp-final-cd{flex-wrap:wrap}
+}
+</style>
+</head>
+<body data-lang="en">
+
+<!-- NAV + COUNTDOWN : single fixed wrapper so heights never desync -->
+<div class="camp-top-fixed" id="campTopFixed">
+  <nav class="camp-nav">
+    <div class="camp-logo">Light<span>Diet</span></div>
+    <a href="#" class="camp-back">← <span class="en">Back to main site</span><span class="am">ወደ ዋና ጣቢያ ተመለስ</span></a>
+    <div class="lang-mini">
+      <button class="active" onclick="setCLang('en')">EN</button>
+      <button onclick="setCLang('am')">አማ</button>
+    </div>
+  </nav>
+  <!-- COUNTDOWN BAR : campaign_pages.countdown_end + show_countdown -->
+  <div class="countdown-bar" id="countdownBar">
+    <span><span class="en">Ramadan Reset Program closes in</span><span class="am">የረመዳን ፕሮግራም ይዘጋል በ</span>:</span>
+    <div class="cd-units">
+      <div class="cd-unit"><span id="cd-d">00</span>d</div>
+      <div class="cd-unit"><span id="cd-h">00</span>h</div>
+      <div class="cd-unit"><span id="cd-m">00</span>m</div>
+      <div class="cd-unit"><span id="cd-s">00</span>s</div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO : campaign_pages.title_en/am + tagline_en/am -->
+<section class="camp-hero">
+  <div class="camp-eyebrow">
+    <span class="en">Limited-Time Campaign</span><span class="am">የተወሰነ ጊዜ ዘመቻ</span>
+  </div>
+  <h1>
+    <span class="en">Break Your Fast Without <em>Breaking</em> Your Progress</span>
+    <span class="am">እድገትዎን ሳይ<em>ሰብሩ</em> ጾምዎን ይፍቱ</span>
+  </h1>
+  <p class="sub">
+    <span class="en">A 4-week guided nutrition reset built around the fasting season — bilingual meal plans, live check-ins, and a specialist who understands the tradition.</span>
+    <span class="am">በጾም ወቅት ዙሪያ የተገነባ የ4-ሳምንት የተመራ የስርዓተ-ምግብ እድሳት — ሁለት ቋንቋ የምግብ ፕላኖች፣ ቀጥታ ክትትል፣ እና ባህሉን የሚረዳ ስፔሻሊስት።</span>
+  </p>
+  <div class="camp-cta-row">
+    <button class="btn-camp" onclick="campCTA()"><span class="en">Claim Your Spot</span><span class="am">ቦታዎን ያስያዙ</span> →</button>
+    <a href="#video" class="btn-camp-outline"><span class="en">Watch the 2-Min Video</span><span class="am">2 ደቂቃ ቪዲዮ ይመልከቱ</span></a>
+  </div>
+</section>
+
+<!-- VIDEO : campaign_pages.video_url (YouTube embed, admin pastes any link) -->
+<div class="camp-video-wrap" id="video">
+  <div class="camp-video">
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Campaign video" allowfullscreen loading="lazy"></iframe>
+  </div>
+</div>
+
+<!-- BODY COPY : campaign_pages.body_en/am -->
+<div class="camp-body">
+  <h2><span class="en">Built for <em>This</em> Season</span><span class="am">ለ<em>ዚህ</em> ወቅት የተገነባ</span></h2>
+  <p class="en">Fasting changes everything about how your body needs to eat — timing, hydration, energy. Most nutrition plans ignore that completely. This one doesn't.</p>
+  <p class="am">ጾም ሰውነትዎ እንዴት መብላት እንዳለበት ሁሉንም ነገር ይቀይራል — ጊዜ፣ ውሃ፣ ኃይል። አብዛኞቹ የምግብ ፕላኖች ይህንን ሙሉ በሙሉ ችላ ይላሉ። ይህኛው ግን አይደለም።</p>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-icon">🕊️</div>
+      <h4><span class="en">Fast-Aware Plans</span><span class="am">ጾም-ተኮር ፕላኖች</span></h4>
+      <p class="en">Meal timing built around break-fast hours</p>
+      <p class="am" style="display:none">የፍስክ ሰዓት ዙሪያ የተገነባ</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">📞</div>
+      <h4><span class="en">Weekly Check-ins</span><span class="am">ሳምንታዊ ክትትል</span></h4>
+      <p class="en">Live support every step of the 4 weeks</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">📄</div>
+      <h4><span class="en">Bilingual Materials</span><span class="am">ሁለት ቋንቋ ቁሳቁስ</span></h4>
+      <p class="en">Every plan delivered in English &amp; Amharic</p>
+    </div>
+  </div>
+</div>
+
+<!-- BEFORE/AFTER : campaign_pages.before_after JSONB -->
+<section class="camp-ba">
+  <div class="camp-ba-inner">
+    <div class="camp-section-label" style="text-align:center">
+      <span class="en">Past Campaign Results</span><span class="am">ያለፉ ዘመቻ ውጤቶች</span>
+    </div>
+    <h2><span class="en">Real People, Real Season</span><span class="am">እውነተኛ ሰዎች፣ እውነተኛ ወቅት</span></h2>
+    <div class="ba-toggle-grid">
+      <div class="ba-card-mini">
+        <div class="ba-visual-mini"><div class="art"></div><div class="emoji">🧑</div></div>
+        <div class="ba-mini-info">
+          <div class="ba-mini-name">Yohannes T.</div>
+          <div class="ba-mini-stat">-6 kg</div>
+          <div class="ba-mini-dur"><span class="en">During last Ramadan program</span><span class="am">ባለፈው ረመዳን ፕሮግራም</span></div>
+        </div>
+      </div>
+      <div class="ba-card-mini">
+        <div class="ba-visual-mini"><div class="art"></div><div class="emoji">👩</div></div>
+        <div class="ba-mini-info">
+          <div class="ba-mini-name">Selam B.</div>
+          <div class="ba-mini-stat">+40%</div>
+          <div class="ba-mini-dur"><span class="en">Reported energy increase</span><span class="am">ሪፖርት የተደረገ የኃይል ጭማሪ</span></div>
+        </div>
+      </div>
+      <div class="ba-card-mini">
+        <div class="ba-visual-mini"><div class="art"></div><div class="emoji">🧑</div></div>
+        <div class="ba-mini-info">
+          <div class="ba-mini-name">Dawit M.</div>
+          <div class="ba-mini-stat">100%</div>
+          <div class="ba-mini-dur"><span class="en">Program completion rate</span><span class="am">የፕሮግራም ማጠናቀቅ መጠን</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA : campaign_pages.cta_label_en/am + cta_url -->
+<section class="camp-final-cta">
+  <div class="camp-section-label"><span class="en">Spots Are Limited</span><span class="am">ቦታዎች የተወሰኑ ናቸው</span></div>
+  <h2><span class="en">Your Fast, <em>Fully Supported</em></span><span class="am">ጾምዎ፣ <em>ሙሉ በሙሉ የተደገፈ</em></span></h2>
+  <p><span class="en">Only 15 spots this season — first come, first served.</span><span class="am">በዚህ ወቅት 15 ቦታዎች ብቻ — ቀድሞ የመጣ ቀድሞ ያገኛል።</span></p>
+  <div class="camp-final-cd">
+    <div class="fcd-box"><div class="fcd-num" id="fcd-d">00</div><div class="fcd-label">Days</div></div>
+    <div class="fcd-box"><div class="fcd-num" id="fcd-h">00</div><div class="fcd-label">Hrs</div></div>
+    <div class="fcd-box"><div class="fcd-num" id="fcd-m">00</div><div class="fcd-label">Min</div></div>
+    <div class="fcd-box"><div class="fcd-num" id="fcd-s">00</div><div class="fcd-label">Sec</div></div>
+  </div>
+  <button class="btn-camp" onclick="campCTA()"><span class="en">Claim Your Spot Now</span><span class="am">አሁን ቦታዎን ያስያዙ</span> →</button>
+</section>
+
+<!-- FOOTER -->
+<footer class="camp-foot">
+  <p><span class="en">A campaign by</span><span class="am">ዘመቻ በ</span> <a href="#">Light Diet Nutrition</a> · <span class="en">Powered by Ethel Software</span><span class="am">በ Ethel Software የተጎላበተ</span></p>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════
+// LANGUAGE TOGGLE (campaign pages are standalone — own tiny toggle)
+// ═══════════════════════════════════════════
+function setCLang(lang) {
+  document.body.setAttribute('data-lang', lang);
+  document.querySelectorAll('.lang-mini button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+// ═══════════════════════════════════════════
+// COUNTDOWN — driven by campaign_pages.countdown_end (ISO timestamp from DB)
+// ═══════════════════════════════════════════
+const CAMPAIGN_END = new Date(Date.now() + (6*24 + 14) * 60 * 60 * 1000); // demo: ~6.5 days out
+
+function tickCountdown() {
+  const now = new Date();
+  let diff = Math.max(0, CAMPAIGN_END - now);
+  const d = Math.floor(diff / 86400000); diff -= d * 86400000;
+  const h = Math.floor(diff / 3600000);  diff -= h * 3600000;
+  const m = Math.floor(diff / 60000);    diff -= m * 60000;
+  const s = Math.floor(diff / 1000);
+  const pad = n => String(n).padStart(2,'0');
+  ['cd-d','fcd-d'].forEach(id => document.getElementById(id).textContent = pad(d));
+  ['cd-h','fcd-h'].forEach(id => document.getElementById(id).textContent = pad(h));
+  ['cd-m','fcd-m'].forEach(id => document.getElementById(id).textContent = pad(m));
+  ['cd-s','fcd-s'].forEach(id => document.getElementById(id).textContent = pad(s));
+}
+tickCountdown();
+setInterval(tickCountdown, 1000);
+
+function fitHeroToTopBar() {
+  const bar = document.getElementById('campTopFixed');
+  const hero = document.querySelector('.camp-hero');
+  hero.style.paddingTop = (bar.offsetHeight + 40) + 'px';
+}
+window.addEventListener('load', fitHeroToTopBar);
+window.addEventListener('resize', fitHeroToTopBar);
+fitHeroToTopBar();
+
+// ═══════════════════════════════════════════
+// CTA — attributes inquiry to this campaign (campaign_pages.id → inquiries.source tag)
+// ═══════════════════════════════════════════
+function campCTA() {
+  alert('Phase 8/9: posts to /api/inquiries with { source: "campaign", campaign_id: "ramadan-reset-2026" }');
+}
+</script>
+</body>
+</html>
